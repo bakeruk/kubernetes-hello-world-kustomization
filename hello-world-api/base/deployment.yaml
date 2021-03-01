@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-api-deployment
+  labels:
+    app: hello-world-api
+    tier: backend
+spec:
+  selector:
+    matchLabels:
+      app: hello-world-api
+  template:
+    metadata:
+      name: hello-world-api
+      labels:
+        app: hello-world-api
+        tier: backend
+    spec:
+      containers:
+      - name: hello-world-api
+        image: bakeruk/hello-world-api
+        ports:
+        - containerPort: 80
+  replicas: 1
