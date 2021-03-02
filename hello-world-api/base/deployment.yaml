@@ -6,6 +6,7 @@ metadata:
     app: hello-world-api
     tier: backend
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: hello-world-api
@@ -17,8 +18,16 @@ spec:
         tier: backend
     spec:
       containers:
-      - name: hello-world-api
-        image: bakeruk/hello-world-api
-        ports:
-        - containerPort: 80
-  replicas: 1
+        - name: hello-world-api
+          image: bakeruk/hello-world-api
+          imagePullPolicy: Always
+          ports:
+            - protocol: TCP
+              containerPort: 3000
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
