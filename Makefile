@@ -1,14 +1,11 @@
-.PHONY: create
-create:
-	@kind create cluster --config kind-config.yaml --name hello-world
+.PHONY: create-cluster
+create-cluster:
+	@kind create cluster --name hello-world && \
+	make kustomize
 
-.PHONY: delete
-delete:
+.PHONY: delete-cluster
+delete-cluster:
 	@kind delete cluster --name hello-world
-
-.PHONY: create-build
-create-kustomize:
-	@make create && make kustomize
 
 .PHONY: kustomize
 kustomize:
