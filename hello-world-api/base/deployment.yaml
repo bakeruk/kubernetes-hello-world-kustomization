@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: hello-world-api
-          image: bakeruk/hello-world-api
+          image: localhost:5000/hello-world-api:latest
           imagePullPolicy: Always
           ports:
             - protocol: TCP
